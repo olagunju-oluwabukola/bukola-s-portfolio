@@ -44,7 +44,7 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     height: var(--nav-h);
-    background: rgba(247, 245, 240, 0.9);
+    background: rgba(247, 245, 240, 0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--paper-warm);
     display: flex;
@@ -52,6 +52,7 @@
     justify-content: space-between;
     padding: 0 clamp(1.5rem, 5vw, 4rem);
     z-index: 100;
+    gap: 1rem;
   }
 
   .nav-logo {
@@ -61,12 +62,16 @@
     color: var(--ink);
     text-decoration: none;
     letter-spacing: -0.02em;
+    flex-shrink: 0;
   }
 
+  /* Desktop nav links */
   .nav-links {
     display: flex;
     gap: 2rem;
     list-style: none;
+    margin-left: auto;
+    margin-right: 1.5rem;
   }
 
   .nav-links a {
@@ -79,6 +84,110 @@
   }
 
   .nav-links a:hover { color: var(--ink); }
+
+  /* Hamburger button */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    margin-left: auto;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+
+  .nav-toggle:hover { background: var(--paper-warm); }
+
+  .nav-toggle span {
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform-origin: center;
+  }
+
+  /* Hamburger → X animation */
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Mobile drawer */
+  .nav-drawer {
+    display: none;
+    position: fixed;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    background: rgba(247, 245, 240, 0.98);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--paper-warm);
+    padding: 1.25rem clamp(1.5rem, 5vw, 4rem) 1.5rem;
+    z-index: 99;
+    flex-direction: column;
+    gap: 0;
+    transform: translateY(-8px);
+    opacity: 0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  .nav-drawer.open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .nav-drawer a {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--ink-muted);
+    text-decoration: none;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--paper-warm);
+    transition: color 0.2s;
+    display: block;
+  }
+
+  .nav-drawer a:last-child { border-bottom: none; padding-bottom: 0; }
+  .nav-drawer a:hover { color: var(--ink); }
+
+  /* Download button — always visible */
+  .nav-resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 18px;
+    background: var(--accent);
+    color: #fff;
+    border: 1.5px solid var(--accent);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.2s, border-color 0.2s;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-resume-btn:hover { background: #0F3328; border-color: #0F3328; }
+
+  .nav-resume-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+  /* ── RESPONSIVE NAV ── */
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-drawer { display: flex; }
+  }
 
   /* ── LAYOUT ── */
   main { padding-top: var(--nav-h); }
@@ -129,10 +238,7 @@
     margin-bottom: 1.5rem;
   }
 
-  .hero h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
 
   .hero-sub {
     font-size: 18px;
@@ -164,20 +270,10 @@
     letter-spacing: 0.01em;
   }
 
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
-  }
+  .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
   .btn-primary:hover { background: #0F3328; border-color: #0F3328; }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--ink);
-    border-color: var(--paper-warm);
-  }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--paper-warm); }
   .btn-ghost:hover { background: var(--paper-warm); }
-
   .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
 
   /* ── SECTION HEADERS ── */
@@ -232,10 +328,7 @@
     padding-top: 0.5rem;
   }
 
-  .stat-item {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 1.25rem;
-  }
+  .stat-item { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.25rem; }
 
   .stat-number {
     font-family: var(--serif);
@@ -247,19 +340,9 @@
     margin-bottom: 4px;
   }
 
-  .stat-label {
-    font-size: 13px;
-    color: rgba(255,255,255,0.45);
-    letter-spacing: 0.04em;
-    font-weight: 300;
-  }
+  .stat-label { font-size: 13px; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; font-weight: 300; }
 
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 2rem;
-  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2rem; }
 
   .tag {
     font-size: 12px;
@@ -269,23 +352,11 @@
     letter-spacing: 0.02em;
   }
 
-  .tag-dark {
-    background: rgba(255,255,255,0.08);
-    color: rgba(255,255,255,0.65);
-    border: 1px solid rgba(255,255,255,0.12);
-  }
-
-  .tag-light {
-    background: var(--tag-bg);
-    color: var(--ink-muted);
-  }
+  .tag-dark { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.12); }
+  .tag-light { background: var(--tag-bg); color: var(--ink-muted); }
 
   /* ── WORK ── */
-  .work-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5px;
-  }
+  .work-grid { display: flex; flex-direction: column; gap: 1.5px; }
 
   .work-item {
     display: grid;
@@ -303,61 +374,19 @@
   .work-item:hover .work-arrow { transform: translate(4px, -4px); }
   .work-item:last-child { border-bottom: 1px solid var(--paper-warm); }
 
-  .work-meta {
-    font-size: 12px;
-    color: var(--ink-ghost);
-    margin-bottom: 0.5rem;
-    letter-spacing: 0.04em;
-    font-weight: 400;
-  }
+  .work-meta { font-size: 12px; color: var(--ink-ghost); margin-bottom: 0.5rem; letter-spacing: 0.04em; font-weight: 400; }
+  .work-title { font-family: var(--serif); font-weight: 400; font-size: 22px; color: var(--ink); letter-spacing: -0.015em; margin-bottom: 0.5rem; line-height: 1.25; }
+  .work-desc { font-size: 14px; color: var(--ink-muted); line-height: 1.6; max-width: 560px; font-weight: 300; }
+  .work-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 0.75rem; }
 
-  .work-title {
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: 22px;
-    color: var(--ink);
-    letter-spacing: -0.015em;
-    margin-bottom: 0.5rem;
-    line-height: 1.25;
-  }
-
-  .work-desc {
-    font-size: 14px;
-    color: var(--ink-muted);
-    line-height: 1.6;
-    max-width: 560px;
-    font-weight: 300;
-  }
-
-  .work-tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-top: 0.75rem;
-  }
-
-  .work-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.75rem;
-    padding-top: 4px;
-  }
-
-  .work-year {
-    font-size: 13px;
-    color: var(--ink-ghost);
-    font-weight: 300;
-  }
+  .work-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.75rem; padding-top: 4px; }
+  .work-year { font-size: 13px; color: var(--ink-ghost); font-weight: 300; }
 
   .work-arrow {
-    width: 32px;
-    height: 32px;
+    width: 32px; height: 32px;
     border: 1px solid var(--paper-warm);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     color: var(--ink-muted);
     transition: transform 0.2s;
     flex-shrink: 0;
@@ -365,7 +394,7 @@
 
   .work-arrow svg { width: 14px; height: 14px; }
 
-  /* ── FEATURED PROJECT ── */
+  /* ── FEATURED ── */
   .featured-card {
     background: var(--accent);
     border-radius: 20px;
@@ -382,64 +411,28 @@
   }
 
   .featured-card:hover { background: #0F3328; }
+  .featured-card:hover .featured-arrow { transform: translate(4px, -4px); }
 
-  .featured-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-    margin-bottom: 1rem;
-  }
-
-  .featured-title {
-    font-family: var(--serif);
-    font-weight: 300;
-    font-size: 32px;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    color: #fff;
-    margin-bottom: 0.75rem;
-  }
-
-  .featured-desc {
-    font-size: 15px;
-    color: rgba(255,255,255,0.65);
-    max-width: 500px;
-    line-height: 1.65;
-    font-weight: 300;
-  }
-
-  .featured-tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-top: 1.25rem;
-  }
+  .featured-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 1rem; }
+  .featured-title { font-family: var(--serif); font-weight: 300; font-size: 32px; letter-spacing: -0.02em; line-height: 1.15; color: #fff; margin-bottom: 0.75rem; }
+  .featured-desc { font-size: 15px; color: rgba(255,255,255,0.65); max-width: 500px; line-height: 1.65; font-weight: 300; }
+  .featured-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 1.25rem; }
 
   .tag-featured {
-    font-size: 11px;
-    padding: 4px 10px;
-    border-radius: 100px;
-    background: rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.75);
-    letter-spacing: 0.02em;
+    font-size: 11px; padding: 4px 10px; border-radius: 100px;
+    background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.75);
+    letter-spacing: 0.02em; text-decoration: none;
   }
 
   .featured-arrow {
-    width: 48px;
-    height: 48px;
+    width: 48px; height: 48px;
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; flex-shrink: 0;
     transition: transform 0.2s;
   }
 
-  .featured-card:hover .featured-arrow { transform: translate(4px, -4px); }
   .featured-arrow svg { width: 18px; height: 18px; }
 
   /* ── PROCESS ── */
@@ -454,66 +447,22 @@
     overflow: hidden;
   }
 
-  .process-step {
-    padding: 2rem 1.75rem;
-    border-right: 1px solid #D5D1C6;
-    position: relative;
-  }
-
+  .process-step { padding: 2rem 1.75rem; border-right: 1px solid #D5D1C6; position: relative; }
   .process-step:last-child { border-right: none; }
-
-  .process-num {
-    font-family: var(--serif);
-    font-size: 13px;
-    color: var(--ink-ghost);
-    margin-bottom: 1rem;
-    font-weight: 300;
-  }
-
-  .process-name {
-    font-weight: 500;
-    font-size: 15px;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
-  }
-
-  .process-desc {
-    font-size: 13px;
-    color: var(--ink-muted);
-    line-height: 1.6;
-    font-weight: 300;
-  }
+  .process-num { font-family: var(--serif); font-size: 13px; color: var(--ink-ghost); margin-bottom: 1rem; font-weight: 300; }
+  .process-name { font-weight: 500; font-size: 15px; color: var(--ink); margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+  .process-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.6; font-weight: 300; }
 
   /* ── CONTACT ── */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
 
-  .contact-text p {
-    font-size: 16px;
-    color: var(--ink-muted);
-    line-height: 1.75;
-    font-weight: 300;
-    margin-bottom: 1.25rem;
-  }
+  .contact-text p { font-size: 16px; color: var(--ink-muted); line-height: 1.75; font-weight: 300; margin-bottom: 1.25rem; }
 
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
 
   .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    color: var(--ink);
-    font-size: 15px;
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; color: var(--ink); font-size: 15px;
     padding: 1rem 1.25rem;
     background: var(--paper-warm);
     border-radius: 12px;
@@ -524,22 +473,17 @@
   .contact-link:hover { border-color: var(--ink); background: #fff; }
 
   .contact-link-icon {
-    width: 36px;
-    height: 36px;
+    width: 36px; height: 36px;
     background: var(--accent-light);
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     flex-shrink: 0;
   }
 
   .contact-link-icon svg { width: 18px; height: 18px; color: var(--accent); }
-
   .contact-link-text { flex: 1; }
   .contact-link-label { font-size: 11px; color: var(--ink-ghost); display: block; margin-bottom: 1px; letter-spacing: 0.03em; }
   .contact-link-value { font-size: 14px; color: var(--ink); font-weight: 400; }
-
   .contact-link-arrow { color: var(--ink-ghost); }
   .contact-link-arrow svg { width: 16px; height: 16px; }
 
@@ -550,14 +494,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 100%;
   }
 
-  footer p {
-    font-size: 13px;
-    color: var(--ink-ghost);
-    font-weight: 300;
-  }
+  footer p { font-size: 13px; color: var(--ink-ghost); font-weight: 300; }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
@@ -565,11 +504,7 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .hero > * {
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards;
-  }
-
+  .hero > * { opacity: 0; animation: fadeUp 0.7s ease forwards; }
   .hero > *:nth-child(1) { animation-delay: 0.1s; }
   .hero > *:nth-child(2) { animation-delay: 0.2s; }
   .hero > *:nth-child(3) { animation-delay: 0.35s; }
@@ -577,18 +512,13 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
-    .about-grid,
-    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .work-item { grid-template-columns: 1fr; }
     .work-right { flex-direction: row; align-items: center; }
-
     .featured-card { grid-template-columns: 1fr; }
-
     .process-grid { grid-template-columns: 1fr; }
     .process-step { border-right: none; border-bottom: 1px solid #D5D1C6; }
     .process-step:last-child { border-bottom: none; }
-
     footer { flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
@@ -598,15 +528,34 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">Oluwabukola</a>
+
+  <!-- Desktop links -->
   <ul class="nav-links">
     <li><a href="#work">Work</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://docs.google.com/document/d/1AkqRkyEm32c-R2EX1XHHOfe_rVZ4tVjcaeDsKDpUo7c/export?format=pdf" class="btn btn-primary" download>
-    Download Resume
+
+  <!-- Hamburger (mobile only) -->
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Download Resume — always visible -->
+  <a href="https://docs.google.com/document/d/1AkqRkyEm32c-R2EX1XHHOfe_rVZ4tVjcaeDsKDpUo7c/export?format=pdf" class="nav-resume-btn" download>
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v8M4 9l4 4 4-4"/><path d="M2 13h12"/></svg>
+    Resume
   </a>
 </nav>
+
+<!-- Mobile drawer -->
+<div class="nav-drawer" id="navDrawer" aria-hidden="true">
+  <a href="#work" class="drawer-link">Work</a>
+  <a href="#about" class="drawer-link">About</a>
+  <a href="#contact" class="drawer-link">Contact</a>
+</div>
 
 <main>
 
@@ -614,10 +563,7 @@
   <section class="hero">
     <p class="hero-eyebrow">Product Manager</p>
     <h1>Building products<br>people <em>actually</em><br>want to use.</h1>
-    <p class="hero-sub">
-        I'm a Product Manager with a background in frontend engineering, focused on understanding user behavior, uncovering opportunities, and building products that deliver measurable value.
-
-</p>
+    <p class="hero-sub">I'm a Product Manager with a background in frontend engineering, focused on understanding user behavior, uncovering opportunities, and building products that deliver measurable value.</p>
     <div class="hero-actions">
       <a href="#work" class="btn btn-primary">
         View my work
@@ -631,14 +577,10 @@
   <div class="about" id="about">
     <section>
       <p class="section-label">About me</p>
-      <h2 class="section-title">Transitioning from <em>building it</em><br>to owning the problem</h2>
       <div class="about-grid">
         <div class="about-text">
-         <p>
-
-Junior Product Manager with 1 year+ Product experience and  a background in frontend engineering. Building products, I became curious about the decisions behind them, why users behave the way they do, what creates value, and how successful  products balance customer needs with business goals, why some products fail and others succeed. I explore product thinking through teardowns, case studies, user interviews,  analysis and hands-on projects. My experience in engineering helps me understand how products are built, think critically about trade-offs, feasibility, and the path from idea to execution.
-
-</p>
+          <p>Junior Product Manager with 1 year+ product experience and a background in frontend engineering. Building products, I became curious about the decisions behind them — why users behave the way they do, what creates value, and how successful products balance customer needs with business goals.</p>
+          <p>I explore product thinking through teardowns, case studies, user interviews, analysis and hands-on projects. My engineering background helps me think critically about trade-offs, feasibility, and the path from idea to execution.</p>
           <div class="skill-tags">
             <span class="tag tag-dark">Product Strategy</span>
             <span class="tag tag-dark">UX Research</span>
@@ -646,15 +588,18 @@ Junior Product Manager with 1 year+ Product experience and  a background in fron
             <span class="tag tag-dark">Data Analysis</span>
             <span class="tag tag-dark">Roadmapping</span>
             <span class="tag tag-dark">Product Documentation</span>
-            <span class="tag tag-dark">Product Strategy</span>
-            <span class="tag tag-dark">Technical Writting</span>
+            <span class="tag tag-dark">Technical Writing</span>
             <span class="tag tag-dark">Jira</span>
             <span class="tag tag-dark">Trello</span>
           </div>
         </div>
         <div class="about-stats">
           <div class="stat-item">
-            <div class="stat-number">3</div>
+            <div class="stat-number">1</div>
+            <div class="stat-label">Year in Product Management</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">2+</div>
             <div class="stat-label">Years in frontend engineering</div>
           </div>
           <div class="stat-item">
@@ -662,10 +607,9 @@ Junior Product Manager with 1 year+ Product experience and  a background in fron
             <div class="stat-label">Product teardowns & case studies</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number">1</div>
-            <div class="stat-label">Product shipped </div>
+            <div class="stat-number">2</div>
+            <div class="stat-label">Products shipped</div>
           </div>
-
         </div>
       </div>
     </section>
@@ -676,33 +620,29 @@ Junior Product Manager with 1 year+ Product experience and  a background in fron
     <p class="section-label">My Works</p>
     <h2 class="section-title">Things I've built<br>and <em>taken apart</em></h2>
 
-    <!-- Featured project -->
     <div class="featured-card">
-  <div>
-    <p class="featured-label">My Project</p>
-    <h3 class="featured-title">Resume RX</h3>
-    <p class="featured-desc">
-      An AI-powered career platform that helps job seekers tailor their resumes to specific roles, generate cover letters, identify skill gaps, prepare for interviews, track job applications, and browse jobs, all in one place.
-    </p>
-
-    <div class="featured-tags">
-        <span class="tag-featured"> Product Manager</span>
-      <a href="https://docs.google.com/document/d/1PMv2eFxR0Qdf1NEqqqpvdAYezHbzWnhY5n12VUjCz9s/edit?usp=sharing" class="tag-featured">Case Study</a>
-      <a href="https://docs.google.com/document/d/1PjxNtcIhNArxNAW7zNjUbsSPJWPHYyJu/edit?usp=sharing&ouid=102253908912327069132&rtpof=true&sd=true" class="tag-featured">PRD</a>
-
-      <a href="https://resume-writer-eight.vercel.app/" class="tag-featured">MVP</a>
+      <div>
+        <p class="featured-label">Featured Project</p>
+        <h3 class="featured-title">Resume RX</h3>
+        <p class="featured-desc">An AI-powered career platform that helps job seekers tailor their resumes to specific roles, generate cover letters, identify skill gaps, prepare for interviews, track job applications, and browse jobs — all in one place.</p>
+        <div class="featured-tags">
+          <span class="tag-featured">Product Manager</span>
+          <a href="https://docs.google.com/document/d/1PMv2eFxR0Qdf1NEqqqpvdAYezHbzWnhY5n12VUjCz9s/edit?usp=sharing" class="tag-featured">Case Study</a>
+          <a href="https://docs.google.com/document/d/1PjxNtcIhNArxNAW7zNjUbsSPJWPHYyJu/edit?usp=sharing&ouid=102253908912327069132&rtpof=true&sd=true" class="tag-featured">PRD</a>
+          <a href="https://resume-writer-eight.vercel.app/" class="tag-featured">MVP</a>
+        </div>
+      </div>
+      <div class="featured-arrow">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14L14 4M14 4H7M14 4v7"/></svg>
+      </div>
     </div>
-  </div>
-</div>
 
-    <!-- Work list -->
     <div class="work-grid">
-
       <a href="https://1drv.ms/p/c/e985e2bb7ae0e61e/IQCZ-fXBHdwqQJ38xdKvXFCwAZghNRfXvEVRJkOr5muU7Ds?e=EUakxu" class="work-item">
         <div>
           <p class="work-meta">Product Teardown</p>
           <h3 class="work-title">Sterling Bank Mobile App</h3>
-          <p class="work-desc">A 14-section UX teardown identifying four critical friction points across authentication, transaction flow, navigation, and support chat, with  user personas, user research, Success Metrics, and redesign proposals.</p>
+          <p class="work-desc">A 14-section UX teardown identifying four critical friction points across authentication, transaction flow, navigation, and support chat, with user personas, user research, success metrics, and redesign proposals.</p>
           <div class="work-tags">
             <span class="tag tag-light">UX Analysis</span>
             <span class="tag tag-light">Information Architecture</span>
@@ -721,7 +661,7 @@ Junior Product Manager with 1 year+ Product experience and  a background in fron
         <div>
           <p class="work-meta">Case Study</p>
           <h3 class="work-title">Spotify User Dissatisfaction</h3>
-          <p class="work-desc">An analysis of Spotify's user experience, examining challenges around offline playback, subscription management, load time, and customer support, with recommendations for improving the overall user satisfaction.</p>
+          <p class="work-desc">An analysis of Spotify's user experience, examining challenges around offline playback, subscription management, load time, and customer support, with recommendations for improving overall user satisfaction.</p>
           <div class="work-tags">
             <span class="tag tag-light">User Research</span>
             <span class="tag tag-light">Product Strategy</span>
@@ -729,7 +669,6 @@ Junior Product Manager with 1 year+ Product experience and  a background in fron
           </div>
         </div>
         <div class="work-right">
-
           <div class="work-arrow">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
           </div>
@@ -740,7 +679,7 @@ Junior Product Manager with 1 year+ Product experience and  a background in fron
         <div>
           <p class="work-meta">Article</p>
           <h3 class="work-title">Distributed to millions, adopted by few</h3>
-          <p class="work-desc">What Copilot’s 3% problem reveals about how products actually earn their place in people’s lives.</p>
+          <p class="work-desc">What Copilot's 3% problem reveals about how products actually earn their place in people's lives.</p>
           <div class="work-tags">
             <span class="tag tag-light">AI</span>
             <span class="tag tag-light">Adoption</span>
@@ -748,7 +687,6 @@ Junior Product Manager with 1 year+ Product experience and  a background in fron
           </div>
         </div>
         <div class="work-right">
-
           <div class="work-arrow">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
           </div>
@@ -758,7 +696,7 @@ Junior Product Manager with 1 year+ Product experience and  a background in fron
       <a href="https://substack.com/home/post/p-199891092" class="work-item">
         <div>
           <p class="work-meta">Article</p>
-          <h3 class="work-title">Why trust is the most important thing a digital product can earn and the hardest to design for</h3>
+          <h3 class="work-title">Why trust is the most important thing a digital product can earn</h3>
           <p class="work-desc">The signals your product sends before you say anything at all.</p>
           <div class="work-tags">
             <span class="tag tag-light">Product Thinking</span>
@@ -767,13 +705,11 @@ Junior Product Manager with 1 year+ Product experience and  a background in fron
           </div>
         </div>
         <div class="work-right">
-
           <div class="work-arrow">
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h8M7 3l4 4-4 4"/></svg>
           </div>
         </div>
       </a>
-
     </div>
   </section>
 
@@ -801,7 +737,7 @@ Junior Product Manager with 1 year+ Product experience and  a background in fron
         <div class="process-step">
           <p class="process-num">04</p>
           <p class="process-name">Ship & measure</p>
-          <p class="process-desc"> Working closely with engineers and stakeholders, I help translate ideas into products, define success metrics, and measure outcomes to inform future decisions.</p>
+          <p class="process-desc">Working closely with engineers and stakeholders, I help translate ideas into products, define success metrics, and measure outcomes to inform future decisions.</p>
         </div>
       </div>
     </section>
@@ -828,7 +764,8 @@ Junior Product Manager with 1 year+ Product experience and  a background in fron
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
           </div>
         </a>
-        <a href="www.linkedin.com/in/oluwabukola-olagunju-sussanah" class="contact-link" target="_blank" rel="noopener">
+
+        <a href="https://www.linkedin.com/in/oluwabukola-olagunju-sussanah" class="contact-link" target="_blank" rel="noopener">
           <div class="contact-link-icon">
             <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="14" height="14" rx="2"/><path d="M6 8v5M6 6v.5M9 13V9.5a2 2 0 014 0V13M9 9v4"/></svg>
           </div>
@@ -841,33 +778,31 @@ Junior Product Manager with 1 year+ Product experience and  a background in fron
           </div>
         </a>
 
-       <!-- View on Google Docs -->
-<a href="https://docs.google.com/document/d/1AkqRkyEm32c-R2EX1XHHOfe_rVZ4tVjcaeDsKDpUo7c/edit?usp=sharing" class="contact-link" target="_blank" rel="noopener noreferrer">
-  <div class="contact-link-icon">
-    <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2H5a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V6l-4-4z"/><path d="M10 2v4h4M6 9h6M6 12h4"/></svg>
-  </div>
-  <div class="contact-link-text">
-    <span class="contact-link-label">Resume</span>
-    <span class="contact-link-value">View on Google Docs</span>
-  </div>
-  <div class="contact-link-arrow">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-  </div>
-</a>
+        <a href="https://docs.google.com/document/d/1AkqRkyEm32c-R2EX1XHHOfe_rVZ4tVjcaeDsKDpUo7c/edit?usp=sharing" class="contact-link" target="_blank" rel="noopener noreferrer">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2H5a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V6l-4-4z"/><path d="M10 2v4h4M6 9h6M6 12h4"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <span class="contact-link-label">Resume</span>
+            <span class="contact-link-value">View on Google Docs</span>
+          </div>
+          <div class="contact-link-arrow">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </div>
+        </a>
 
-<!-- Download PDF -->
-<a href="https://docs.google.com/document/d/1AkqRkyEm32c-R2EX1XHHOfe_rVZ4tVjcaeDsKDpUo7c/export?format=pdf" class="contact-link" download>
-  <div class="contact-link-icon">
-    <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2H5a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V6l-4-4z"/><path d="M10 2v4h4M6 9h6M6 12h4"/></svg>
-  </div>
-  <div class="contact-link-text">
-    <span class="contact-link-label">Resume</span>
-    <span class="contact-link-value">Download PDF</span>
-  </div>
-  <div class="contact-link-arrow">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v8M4 9l4 4 4-4"/></svg>
-  </div>
-</a>
+        <a href="https://docs.google.com/document/d/1AkqRkyEm32c-R2EX1XHHOfe_rVZ4tVjcaeDsKDpUo7c/export?format=pdf" class="contact-link" download>
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2H5a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V6l-4-4z"/><path d="M10 2v4h4M6 9h6M6 12h4"/></svg>
+          </div>
+          <div class="contact-link-text">
+            <span class="contact-link-label">Resume</span>
+            <span class="contact-link-value">Download PDF</span>
+          </div>
+          <div class="contact-link-arrow">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3v8M4 9l4 4 4-4"/></svg>
+          </div>
+        </a>
       </div>
     </div>
   </section>
@@ -875,9 +810,48 @@ Junior Product Manager with 1 year+ Product experience and  a background in fron
 </main>
 
 <footer>
-  <p>© 2026 Your Name. Built with intent.</p>
+  <p>© 2026 Oluwabukola Olagunju. Built with intent.</p>
   <p>Product Manager</p>
 </footer>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const drawer = document.getElementById('navDrawer');
+  const drawerLinks = drawer.querySelectorAll('a');
+
+  function closeMenu() {
+    toggle.classList.remove('open');
+    drawer.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+
+  toggle.addEventListener('click', () => {
+    const isOpen = toggle.classList.contains('open');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      toggle.classList.add('open');
+      drawer.classList.add('open');
+      toggle.setAttribute('aria-expanded', 'true');
+      drawer.setAttribute('aria-hidden', 'false');
+    }
+  });
+
+  // Close drawer when a link is clicked
+  drawerLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close drawer on outside click
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !drawer.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  const nav = document.querySelector('nav');
+</script>
 
 </body>
 </html>
