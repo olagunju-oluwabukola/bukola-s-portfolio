@@ -11,7 +11,7 @@ const PROJECTS = [
     title: 'ResumeRx',
     tagline: 'An AI-powered career tools platform that helps job seekers build tailored resumes, generate cover letters, and prep for interviews — from 0 to 1.',
     status: 'Live',
-    thumbnail: '/assets/Screenshot 2026-05-06 113857.png',
+    thumbnail: '/assets/resume.png',
     thumbnailBg: '#e8f0fe',
     prd: {
       label: 'OPEN PRD',
@@ -90,7 +90,7 @@ const PROJECTS = [
   tagline:
     'A community-powered local discovery platform that helps people find trusted places through AI-powered recommendations and real local insights.',
   status: 'In Progress',
-  thumbnail: '/assets/Screenshot 2026-06-28 192639.png',
+  thumbnail: '/assets/bemvida.png',
   thumbnailBg: '',
 
   prd: {
@@ -208,7 +208,7 @@ const PROJECTS = [
     title: 'Sterling Bank UX Teardown',
     tagline: 'Authentication friction, transfer flow gaps, and support chat issues — with a prioritised fix roadmap.',
     status: 'Case Study',
-    thumbnail: 'assets/Screenshot 2026-06-12 152842.png',
+    thumbnail: 'assets/sterling.png',
     thumbnailBg: '#1a0a0a',
     prd: {
       label: 'TEARDOWN · V1',

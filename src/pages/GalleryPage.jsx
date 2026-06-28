@@ -2,14 +2,14 @@ import PageHeader from '../components/PageHeader'
 
 const images = [
   { src: '/assets/avatar.png', alt: '' },
-  { src: '/assets/bukola cartoon.jpeg', alt: '' },
-  { src: '/assets/IMG_20240812_162829.jpg', alt: '' },
-  { src: '/assets/ChatGPT Image Jun 15, 2026, 10_04_34 AM.png', alt: '' },
-  { src: '/assets/gallery/img5.jpg', alt: '' },
-  { src: '/assets/gallery/img6.jpg', alt: '' },
-  { src: '/assets/gallery/img7.jpg', alt: '' },
-  { src: '/assets/gallery/img8.jpg', alt: '' },
-  { src: '/assets/gallery/img9.jpg', alt: '' },
+  { src: '/assets/bukola-cartoon.jpeg', alt: '' },
+  { src: '/assets/img1.png', alt: '' },
+  { src: '/assets/img2.jpeg', alt: '' },
+  { src: '/assets/img3.jpg', alt: '' },
+  // { src: '/assets/gallery/img6.jpg', alt: '' },
+  // { src: '/assets/gallery/img7.jpg', alt: '' },
+  // { src: '/assets/gallery/img8.jpg', alt: '' },
+  // { src: '/assets/gallery/img9.jpg', alt: '' },
 ]
 
 function GalleryPage() {
