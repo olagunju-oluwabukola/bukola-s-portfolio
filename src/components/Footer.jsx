@@ -9,7 +9,7 @@ function Footer() {
         <div>
           <div className="font-serif text-xl text-ink mb-2">Oluwabukola Olagunju</div>
           <p className="text-sm text-ink-mid leading-relaxed font-light max-w-[300px] mb-5">
-            Product Manager & Frontend Engineer. Building products people actually want to use.
+            Product Manager. Building products people actually want to use.
           </p>
           <div className="flex gap-3">
             <a href="mailto:greatoluwabukola@gmail.com" className="w-[34px] h-[34px] bg-bg-card border border-border-custom rounded-lg flex items-center justify-center text-ink-mid no-underline transition-all duration-200 hover:bg-ink hover:text-white hover:border-ink" title="Email">
