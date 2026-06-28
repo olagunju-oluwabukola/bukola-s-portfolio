@@ -1,6 +1,6 @@
 import { GraduationCap, BadgeCheck, Search, Package } from 'lucide-react'
 import profile from "../assets/profile.jpg"
-import oluwabukola from "../assets/oluwabukola.jpg"
+import oluwabukola from "../assets/Oluwabukola.jpg"
 const skills = [
   'Product Strategy', 'UX Research', 'User Interviews', 'Data Analysis',
   'Roadmapping', 'PRD Writing', 'Technical Writing', 'Jira', 'Trello',
