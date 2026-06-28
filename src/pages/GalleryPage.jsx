@@ -1,15 +1,17 @@
 import PageHeader from '../components/PageHeader'
 
+import avatar from '../../assets/avatar.png'
+import bukolaCartoon from '../../assets/bukola-cartoon.jpeg'
+import img1 from '../../assets/img1.png'
+import img2 from '../../assets/img2.jpeg'
+import img3 from '../../assets/img3.jpg'
+
 const images = [
-  { src: '/assets/avatar.png', alt: '' },
-  { src: '/assets/bukola-cartoon.jpeg', alt: '' },
-  { src: '/assets/img1.png', alt: '' },
-  { src: '/assets/img2.jpeg', alt: '' },
-  { src: '/assets/img3.jpg', alt: '' },
-  // { src: '/assets/gallery/img6.jpg', alt: '' },
-  // { src: '/assets/gallery/img7.jpg', alt: '' },
-  // { src: '/assets/gallery/img8.jpg', alt: '' },
-  // { src: '/assets/gallery/img9.jpg', alt: '' },
+  { src: avatar, alt: '' },
+  { src: bukolaCartoon, alt: '' },
+  { src: img1, alt: '' },
+  { src: img2, alt: '' },
+  { src: img3, alt: '' },
 ]
 
 function GalleryPage() {
@@ -17,7 +19,7 @@ function GalleryPage() {
     <div>
       <PageHeader
         label="Gallery"
-        title="Collected moments. No particular order.Not everything fits in a case study"
+        title="Collected moments. No particular order. Not everything fits in a case study"
       />
 
       <div className="max-w-[1200px] mx-auto px-[clamp(1.5rem,5vw,4rem)] pb-20">
