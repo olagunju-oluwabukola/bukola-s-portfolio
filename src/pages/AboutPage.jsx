@@ -1,5 +1,6 @@
 import { GraduationCap, BadgeCheck, Search, Package } from 'lucide-react'
-
+import profile from "../assets/profile.jpg"
+import oluwabukola from "../assets/oluwabukola.jpg"
 const skills = [
   'Product Strategy', 'UX Research', 'User Interviews', 'Data Analysis',
   'Roadmapping', 'PRD Writing', 'Technical Writing', 'Jira', 'Trello',
@@ -43,7 +44,7 @@ function AboutPage() {
         {/* Photo */}
         <div>
           <div className="bg-bg-card rounded-[24px] overflow-hidden">
-            <img src="assets/profile.jpg" alt="Bukola" className="w-full h-full object-cover" />
+            <img src= {profile} alt="Bukola" className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -89,7 +90,7 @@ function AboutPage() {
         {/* Image */}
         <div className="order-1 lg:order-2">
           <div className="bg-bg-card rounded-[24px] overflow-hidden aspect-[4/5]">
-            <img src="/assets/Oluwabukola.jpg" alt="Bukola" className="w-full h-full object-cover object-top" />
+            <img src= {oluwabukola} alt="Bukola" className="w-full h-full object-cover object-top" />
           </div>
         </div>
       </div>

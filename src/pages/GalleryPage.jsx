@@ -1,10 +1,10 @@
 import PageHeader from '../components/PageHeader'
 
-import avatar from '../../assets/avatar.png'
-import bukolaCartoon from '../../assets/bukola-cartoon.jpeg'
-import img1 from '../../assets/img1.png'
-import img2 from '../../assets/img2.jpeg'
-import img3 from '../../assets/img3.jpg'
+import avatar from '/src/assets/avatar.png'
+import bukolaCartoon from '../assets/bukola-cartoon.jpeg'
+import img1 from '../assets/img1.png'
+import img2 from '../assets/img2.jpeg'
+import img3 from '../assets/img3.jpg'
 
 const images = [
   { src: avatar, alt: '' },

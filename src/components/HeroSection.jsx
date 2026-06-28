@@ -2,12 +2,13 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import RecommendationsSection from './Recommendation'
 import SelectedWorkSection from './selectedWork'
+import profile from "../assets/profile.jpg"
 
 const PhotoCard = () => (
   <div className="w-full max-w-[380px] bg-bg-card rounded-[20px] overflow-hidden relative">
     <div className="w-full aspect-[3/4] relative">
       <img
-        src="assets/profile.jpg"
+        src= {profile}
         alt="Oluwabukola Olagunju"
         className="w-full h-full object-cover"
       />

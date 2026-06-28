@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight, X, ExternalLink, FileText, ArrowUpRight } from 'lucide-react'
+import resume from "../assets/resume.png"
+import sterling from "../assets/sterling.png"
+import bemvida from "../assets/bemvida.png"
 
 // ─────────────────────────────────────────────
 // PROJECTS DATA
@@ -11,7 +14,7 @@ const PROJECTS = [
     title: 'ResumeRx',
     tagline: 'An AI-powered career tools platform that helps job seekers build tailored resumes, generate cover letters, and prep for interviews — from 0 to 1.',
     status: 'Live',
-    thumbnail: '/assets/resume.png',
+    thumbnail: resume,
     thumbnailBg: '#e8f0fe',
     prd: {
       label: 'OPEN PRD',
@@ -90,7 +93,7 @@ const PROJECTS = [
   tagline:
     'A community-powered local discovery platform that helps people find trusted places through AI-powered recommendations and real local insights.',
   status: 'In Progress',
-  thumbnail: '/assets/bemvida.png',
+  thumbnail: bemvida,
   thumbnailBg: '',
 
   prd: {
@@ -208,7 +211,7 @@ const PROJECTS = [
     title: 'Sterling Bank UX Teardown',
     tagline: 'Authentication friction, transfer flow gaps, and support chat issues — with a prioritised fix roadmap.',
     status: 'Case Study',
-    thumbnail: 'assets/sterling.png',
+    thumbnail: sterling,
     thumbnailBg: '#1a0a0a',
     prd: {
       label: 'TEARDOWN · V1',
