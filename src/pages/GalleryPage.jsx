@@ -1,6 +1,6 @@
 import PageHeader from '../components/PageHeader'
 
-import avatar from '/src/assets/avatar.png'
+import avatar from '../assets/avatar.png'
 import bukolaCartoon from '../assets/bukola-cartoon.jpeg'
 import img1 from '../assets/img1.png'
 import img2 from '../assets/img2.jpeg'
