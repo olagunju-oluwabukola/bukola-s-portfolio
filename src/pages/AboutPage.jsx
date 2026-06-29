@@ -1,9 +1,10 @@
 import { GraduationCap, BadgeCheck, Search, Package } from 'lucide-react'
 import profile from "../assets/profile.jpg"
 import oluwabukola from "../assets/Oluwabukola.jpg"
+import ProductPhilosophy from '../components/philosopy'
 const skills = [
   'Product Strategy', 'UX Research', 'User Interviews', 'Data Analysis',
-  'Roadmapping', 'PRD Writing', 'Technical Writing', 'Jira', 'Trello',
+  'Roadmapping', 'PRD Writing', 'Technical Writing', 'Jira', 'Trello', 'whimsical',
   'React', 'TypeScript', 'Firebase',
 ]
 
@@ -76,7 +77,7 @@ function AboutPage() {
           </h2>
           <div className="space-y-4">
             <p className="text-base text-ink-mid leading-[1.8] font-light">
-              I have had the experience of working with two early-stage startups that did not make it — and not for the reason most people assume. Both were solving real problems. The ideas were valid, the intent was there, and the products were being built. But that was not enough.
+              I have had the experience of working with two early-stage startups that did not make it and not for the reason most people assume. Both were solving real problems. The ideas were valid, the intent was there, and the products were being built. But that was not enough.
             </p>
             <p className="text-base text-ink-mid leading-[1.8] font-light">
               What got in the way was a combination of overconfidence bias, premature execution, and insufficient market and user research. The teams moved fast without asking the harder questions first: <span className="text-ink font-medium italic">Is the market actually ready for this? Do users want it the way we are building it? Are we solving the right problem, or just the most obvious one?</span>
@@ -95,6 +96,9 @@ function AboutPage() {
         </div>
       </div>
 
+<div >
+  <ProductPhilosophy/>
+</div>
       {/* SECTION 3: Education & Certifications */}
       <div className="py-20 border-b border-border-custom">
         <p className="text-xs font-medium tracking-[0.12em] uppercase text-ink-muted mb-3">Education & Training</p>
