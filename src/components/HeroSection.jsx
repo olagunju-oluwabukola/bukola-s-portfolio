@@ -15,7 +15,7 @@ const PhotoCard = () => (
       {/* Top badge — now "Seeking PM roles" */}
       <div className="absolute top-3 right-3 bg-accent text-white rounded-full px-3.5 py-1.5 text-xs font-medium flex items-center gap-1.5">
         <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse-slow" />
-        Seeking PM roles
+        Open to PM roles
       </div>
     </div>
     {/* Bottom bar — now "Shipping ResumeRx" */}
