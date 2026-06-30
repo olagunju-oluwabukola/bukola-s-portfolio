@@ -137,7 +137,7 @@ function ResumePage() {
       <div className="mb-10">
         <div className="text-[11px] font-semibold tracking-[0.14em] uppercase text-ink-muted mb-4 pb-1.5 border-b border-border-custom">Summary</div>
         <p className="text-sm text-ink-mid leading-[1.7] font-light">
-          Product Manager with 3 years of experience building digital products, with a background in frontend engineering. Skilled in product discovery, user research, requirements gathering, and cross-functional collaboration — translating customer needs into impactful solutions across the full product lifecycle. My engineering background allows me to bridge business goals with technical execution, evaluate feasibility, and make informed product trade-offs that balance user value with delivery.
+          Product Manager with 2+ years of experience building digital products, with a background in frontend engineering. Skilled in product discovery, user research, requirements gathering, and cross-functional collaboration — translating customer needs into impactful solutions across the full product lifecycle. My engineering background allows me to bridge business goals with technical execution, evaluate feasibility, and make informed product trade-offs that balance user value with delivery.
         </p>
       </div>
 

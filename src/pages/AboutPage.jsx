@@ -57,7 +57,7 @@ function AboutPage() {
           </h1>
           <div className="space-y-4">
             <p className="text-base text-ink-mid leading-[1.8] font-light">
-              Product Manager with 3 years of experience building digital products, with a background in frontend engineering. Skilled in product discovery, user research, requirements gathering, and cross-functional collaboration while translating customer needs into impactful solutions across the full product lifecycle.
+              Product Manager with 2+ years of experience building digital products, with a background in frontend engineering. Skilled in product discovery, user research, requirements gathering, and cross-functional collaboration while translating customer needs into impactful solutions across the full product lifecycle.
             </p>
             <p className="text-base text-ink-mid leading-[1.8] font-light">
               I sharpen my product thinking through hands-on experience with product teardowns, case studies, user research, and building products from concept to launch. My engineering background allows me to bridge business goals with technical execution, evaluate feasibility, and make informed product trade-offs that balance user value with delivery.
