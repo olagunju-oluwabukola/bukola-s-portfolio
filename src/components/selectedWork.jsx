@@ -354,47 +354,51 @@ function PrdModal({ project, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center p-0 sm:p-4"
       style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-[850px] bg-white rounded-2xl overflow-hidden shadow-2xl flex flex-col"
-        style={{ maxHeight: '88vh' }}
+        className="relative w-full h-full sm:h-auto max-w-[850px] bg-white sm:rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+        style={{ maxHeight: '100vh' }}
         onClick={e => e.stopPropagation()}
       >
-
-        <div className="bg-[#faf8f5] px-6 pt-5 pb-4 border-b border-[#e5e2dc] flex-shrink-0">
+        {/* Header */}
+        <div className="bg-[#faf8f5] px-4 sm:px-6 pt-4 sm:pt-5 pb-4 border-b border-[#e5e2dc] flex-shrink-0">
           <div className="flex items-start justify-between mb-2">
-            <div className="flex items-center gap-2 text-[11px] font-medium text-[#9C9890] tracking-widest uppercase">
-              <FileText className="w-3.5 h-3.5 text-[#7A3B1E]" />
-              {prd.label} · {prd.company}
+            <div className="flex items-center gap-2 text-[10px] sm:text-[11px] font-medium text-[#9C9890] tracking-widest uppercase min-w-0">
+              <FileText className="w-3.5 h-3.5 text-[#7A3B1E] flex-shrink-0" />
+              <span className="truncate">{prd.label} · {prd.company}</span>
             </div>
             <button onClick={onClose}
-              className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#f0ebe3] transition-colors">
+              className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#f0ebe3] transition-colors flex-shrink-0 ml-2">
               <X className="w-4 h-4 text-[#5C5750]" />
             </button>
           </div>
-          <h2 className="font-serif text-[20px] leading-snug text-[#1C1916] font-semibold mb-1">
+          <h2 className="font-serif text-[17px] sm:text-[20px] leading-snug text-[#1C1916] font-semibold mb-1">
             {prd.title}
           </h2>
-          <p className="text-[13px] text-[#5C5750] leading-relaxed">{prd.description}</p>
+          <p className="text-[12px] sm:text-[13px] text-[#5C5750] leading-relaxed">{prd.description}</p>
         </div>
 
-        <div className="flex flex-1 overflow-hidden">
-          <div className="w-[196px] bg-[#faf8f5] border-r border-[#e5e2dc] flex-shrink-0 overflow-y-auto py-3">
+        {/* Body */}
+        <div className="flex flex-col md:flex-row flex-1 overflow-hidden">
+          {/* Section nav — horizontal scroll strip on mobile, vertical sidebar on desktop */}
+          <div className="w-full md:w-[196px] bg-[#faf8f5] border-b md:border-b-0 md:border-r border-[#e5e2dc]
+            flex-shrink-0 flex md:block overflow-x-auto md:overflow-y-auto py-2 md:py-3">
             {sections.map(section => {
               const isActive = section === activeSection
               return (
                 <button key={section} onClick={() => setActiveSection(section)}
-                  className={`w-full text-left px-4 py-2.5 flex items-center gap-2.5 text-[11px] font-semibold tracking-widest uppercase transition-all duration-150
+                  className={`flex-shrink-0 text-left px-3.5 md:px-4 py-2 md:py-2.5 flex items-center gap-2 md:gap-2.5
+                    text-[10px] md:text-[11px] font-semibold tracking-widest uppercase whitespace-nowrap transition-all duration-150
                     ${isActive
-                      ? 'text-[#7A3B1E] border-r-2 border-[#7A3B1E]'
+                      ? 'text-[#7A3B1E] border-b-2 md:border-b-0 md:border-r-2 border-[#7A3B1E]'
                       : 'text-[#9C9890] hover:text-[#5C5750] hover:bg-[#f0ebe3]'
                     }`}
                   style={isActive ? { background: 'rgba(122,59,30,0.06)' } : {}}
                 >
-                  <span className={`w-3.5 h-3.5 rounded-full border-2 flex-shrink-0 transition-colors
+                  <span className={`hidden md:inline-block w-3.5 h-3.5 rounded-full border-2 flex-shrink-0 transition-colors
                     ${isActive ? 'border-[#7A3B1E]' : 'border-[#9C9890]/40'}`}
                     style={isActive ? { background: 'rgba(122,59,30,0.2)' } : {}}
                   />
@@ -403,13 +407,15 @@ function PrdModal({ project, onClose }) {
               )
             })}
           </div>
-          <div className="flex-1 overflow-y-auto p-7">
-            <h3 className="font-serif text-[22px] text-[#1C1916] font-semibold mb-3">
+
+          {/* Content */}
+          <div className="flex-1 overflow-y-auto p-5 sm:p-7">
+            <h3 className="font-serif text-[18px] sm:text-[22px] text-[#1C1916] font-semibold mb-3">
               {currentContent.title}
             </h3>
             <div className="h-px bg-[#e5e2dc] mb-5" />
             <ContentRenderer content={currentContent.content} />
-            <div className="mt-10 flex items-center gap-2">
+            <div className="mt-8 sm:mt-10 flex items-center gap-2">
               {sections.map(s => (
                 <button key={s} onClick={() => setActiveSection(s)}
                   className={`h-1.5 rounded-full transition-all duration-200 ${
@@ -422,11 +428,11 @@ function PrdModal({ project, onClose }) {
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-[#e5e2dc] flex items-center justify-between bg-white flex-shrink-0">
-          <span className="text-[11px] text-[#9C9890] tracking-widest uppercase">Document · V1</span>
+        <div className="px-4 sm:px-6 py-3 sm:py-4 border-t border-[#e5e2dc] flex items-center justify-between bg-white flex-shrink-0 gap-3">
+          <span className="hidden sm:inline text-[11px] text-[#9C9890] tracking-widest uppercase">Document · V1</span>
           <button
             onClick={() => { onClose(); navigate(prd.caseStudyUrl) }}
-            className="inline-flex items-center gap-2 bg-[#7A3B1E] text-white px-5 py-2.5 rounded-full text-[13px] font-medium hover:bg-[#5E2C13] transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-[#7A3B1E] text-white px-5 py-2.5 rounded-full text-[13px] font-medium hover:bg-[#5E2C13] transition-colors w-full sm:w-auto"
           >
             View more
             <ExternalLink className="w-3.5 h-3.5" />
